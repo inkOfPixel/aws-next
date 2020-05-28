@@ -1,6 +1,6 @@
 # aws-next
 
-Deploy your Next.js apps on AWS using Cloudfront and lambda@edge
+A CLI to build artifacts to deploy Next.js on AWS using Cloudfront and Lambda@edge
 
 ## Usage
 
