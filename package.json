@@ -1,6 +1,6 @@
 {
   "name": "aws-next",
-  "version": "0.0.1-beta.3",
+  "version": "0.0.1",
   "license": "MIT",
   "author": "Massimo De Marchi <massimo@inkofpixel.com>",
   "bin": "./build/cli.js",
