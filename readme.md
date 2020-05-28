@@ -1,4 +1,4 @@
-# aws-next
+# :chocolate_bar: aws-next
 
 A CLI to build artifacts to deploy Next.js on AWS using Cloudfront and Lambda@edge
 
