@@ -17,23 +17,46 @@ import pathToPosix from "../lib/pathToPosix";
 function Index({}) {
   /** @type {[boolean, any]} */
   const [building, setBuilding] = React.useState(true);
+  const [error, setError] = React.useState();
 
   React.useEffect(() => {
     async function run() {
-      await buildArtifacts();
-      setBuilding(false);
+      try {
+        await buildArtifacts();
+        setBuilding(false);
+      } catch (error) {
+        setError(error.message);
+      }
     }
     run();
   }, []);
 
-  return !building ? (
-    <Text>Bye</Text>
-  ) : (
-    <Box>
-      <Color green>
-        <Spinner type="dots" />
+  if (error) {
+    return (
+      <Color red>
+        <Text>❌</Text>
+        <Text>{`  ${error}`}</Text>
       </Color>
-      {" Loading"}
+    );
+  }
+
+  if (building) {
+    return (
+      <Box>
+        <Color green>
+          <Spinner type="dots" />
+        </Color>
+        {" Loading"}
+      </Box>
+    );
+  }
+
+  return (
+    <Box>
+      <Text>✅{"  It's done! Check output folder "}</Text>
+      <Text>
+        "<Color blue>.aws-next</Color>"
+      </Text>
     </Box>
   );
 }
@@ -44,6 +67,12 @@ Index.propTypes = {
 };
 
 async function buildArtifacts() {
+  const hasServerlessArtifacts = await fse.pathExists(".next/serverless");
+  if (!hasServerlessArtifacts) {
+    throw new Error(
+      ".next/serverless folder not found. make sure you run `next build` and that `next.config.js` target is set to 'serverless'"
+    );
+  }
   await fse.emptyDir(".aws-next");
   await fse.ensureDir(".aws-next/s3");
   const hasPublicFolder = await fse.pathExists("./public");
