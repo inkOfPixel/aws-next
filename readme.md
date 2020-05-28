@@ -2,6 +2,10 @@
 
 A CLI to build artifacts to deploy Next.js on AWS using Cloudfront and Lambda@edge
 
+<a href="https://www.npmjs.org/package/aws-next">
+  <img src="https://img.shields.io/npm/v/aws-next.svg" alt="Current npm package version." />
+</a>
+
 ## Install
 
 ```bash
