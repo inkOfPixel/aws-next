@@ -1,7 +1,8 @@
 {
   "name": "aws-next",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
+  "author": "Massimo De Marchi <massimo@inkofpixel.com>",
   "bin": "./build/cli.js",
   "engines": {
     "node": ">=8"
@@ -9,26 +10,24 @@
   "scripts": {
     "dev": "pastel dev",
     "build": "pastel build",
-    "prepare": "pastel build",
-    "webpack": "webpack"
+    "prepare": "pastel build"
   },
   "files": [
-    "build"
+    "build",
+    "handlers"
   ],
   "dependencies": {
     "execa": "4.0.2",
     "fs-extra": "9.0.0",
-    "ink": "^2.7.1",
+    "ink": "2.7.1",
     "ink-spinner": "3.0.1",
     "klaw": "3.0.0",
-    "pastel": "^1.0.3",
+    "pastel": "1.0.3",
     "path-to-regexp": "6.1.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1"
+    "prop-types": "15.7.2",
+    "react": "16.13.1"
   },
   "devDependencies": {
-    "typescript": "^3.9.3",
-    "webpack": "4.43.0",
-    "webpack-cli": "3.3.11"
+    "typescript": "^3.9.3"
   }
 }
