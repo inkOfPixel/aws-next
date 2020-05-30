@@ -148,7 +148,7 @@ async function buildApiHandler(manifest) {
     ),
     fse.copyFile(
       path.join(__dirname, "../../handlers/cloudfront-adapter.js"),
-      ".aws-next/default-lambda/cloudfront-adapter.js"
+      ".aws-next/api-lambda/cloudfront-adapter.js"
     ),
     fse.writeJson(".aws-next/api-lambda/manifest.json", manifest),
     fse.copy(".next/serverless/pages/api", ".aws-next/api-lambda/pages/api"),
