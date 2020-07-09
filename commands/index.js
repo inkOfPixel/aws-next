@@ -212,7 +212,7 @@ async function createBuildManifests() {
   const isHtmlPage = (path) => path.endsWith(".html");
   const isApiPage = (path) => path.startsWith("pages/api");
 
-  Object.entries(pagesManifest).forEach(([route, pageFile]) => {
+  Object.entries(sortedPages).forEach(([route, pageFile]) => {
     const dynamicRoute = isDynamicRoute(route);
     const expressRoute = dynamicRoute ? expressifyDynamicRoute(route) : null;
 
