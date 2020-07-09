@@ -31,3 +31,7 @@ This will output the build artifacts under `.aws-next` folder. The artifacts are
 ## Inject environment variables
 
 Lambda@edge [does not support environment variables](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-requirements-limits.html#lambda-requirements-lambda-function-configuration). To overcome this you can bundle your enviroment variables into your Next.js deploy. Alternatively, this CLI injects into `process.env` custom headers defined from the Cloudfront distribution that starts with `X-ENV-`.
+
+## Publish new version
+
+To publish a new version to npm, just create a Github release with appropriate versioning. Once you create the release a Github workflow will take care of the publishing process.
