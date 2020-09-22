@@ -33,6 +33,12 @@ const router = (manifest) => {
       }
     }
 
+    // If 404 page has been defined return it
+    const notFoundPage = html.nonDynamic["/404"] || ssr.nonDynamic["/404"];
+    if (notFoundPage) {
+      return notFoundPage;
+    }
+
     // path didn't match any route, return error page
     return "pages/_error.js";
   };
