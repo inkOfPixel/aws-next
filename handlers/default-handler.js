@@ -48,6 +48,8 @@ const normaliseUri = (uri) => (uri === "/" ? "/index" : uri);
 
 exports.handler = async (event) => {
   const request = event.Records[0].cf.request;
+  // Inject environment variables from cloudfront headers.
+  // This is a workaround since lambda@edge currently does not support env variables
   process.env = process.env || {};
   Object.keys(request.origin.s3.customHeaders).forEach((header) => {
     if (header.toLowerCase().startsWith("x-env-")) {
@@ -55,7 +57,8 @@ exports.handler = async (event) => {
       process.env[envName] = request.origin.s3.customHeaders[header][0].value;
     }
   });
-  const uri = normaliseUri(request.uri);
+  // const uri = normaliseUri(request.uri);
+  let uri = request.uri;
   const manifest = Manifest;
   const prerenderManifest = PrerenderManifest;
   const { pages, publicFiles } = manifest;
@@ -74,7 +77,7 @@ exports.handler = async (event) => {
 
     if (isHTMLPage) {
       addS3HostHeader(request, s3Origin.domainName);
-      request.uri = uri + ".html";
+      request.uri = normaliseUri(uri) + ".html";
     }
 
     return request;

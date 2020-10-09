@@ -150,6 +150,7 @@ const handler = (event) => {
     if (headers) {
       res.headers = Object.assign(res.headers, headers);
     }
+    return res;
   };
   res.write = (chunk) => {
     response.body = Buffer.concat([
