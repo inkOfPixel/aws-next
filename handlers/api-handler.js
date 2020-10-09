@@ -1,5 +1,4 @@
 // @ts-check
-
 // @ts-ignore
 const manifest = require("./manifest.json");
 const cloudfrontAdapter = require("./cloudfront-adapter");
